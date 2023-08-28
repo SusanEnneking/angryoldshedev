@@ -28,6 +28,9 @@ In terminal, run:
 ```
 docker-compose up -d
 ```
-(This article)[https://hevodata.com/learn/docker-mysql/] has some good info regarding how to get into the container and change the root password.
+[This article](https://hevodata.com/learn/docker-mysql/) has some good info regarding how to get into the container and change the root password.
 
 2.  Run your create script (Database/blog.sql)
+
+## NOTES ##
+[GO text to PDF](https://blog.logrocket.com/converting-text-file-pdf-go/)
