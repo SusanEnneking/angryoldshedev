@@ -9,7 +9,7 @@ some hopefully useful content sprinkled in.
 The main goal for starting the site is to use OpenAI to write blog posts
 from ChatGPT queries.
 
-###Main components:###
+## Main components: ##
 
 1.  MySQL db to house questions and other data items relating to posts
 2.  Go Server to house service to run OpenAI and web site queries
