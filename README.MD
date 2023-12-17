@@ -34,3 +34,4 @@ docker-compose up -d
 
 ## NOTES ##
 [GO text to PDF](https://blog.logrocket.com/converting-text-file-pdf-go/)
+[Repository Pattern in Go](https://techinscribed.com/different-approaches-to-pass-database-connection-into-controllers-in-golang/?source=post_page-----d22d3fa76d91--------------------------------)
