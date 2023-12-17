@@ -11,5 +11,5 @@ CREATE TABLE `blogs`.`blog` (
   `created_date` DATETIME NULL,
   `created_by` VARCHAR(45) NULL,
   `is_active` TINYINT NOT NULL,
-  `category` INT UNSIGNED NULL,
+  `category_id` INT UNSIGNED NULL,
    PRIMARY KEY (`id`));

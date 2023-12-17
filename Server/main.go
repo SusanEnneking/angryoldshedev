@@ -1,33 +1,29 @@
 package main
 
 import (
-	"context"
 	"fmt"
-	"os"
+	"net/http"
 
-	openai "github.com/sashabaranov/go-openai"
+	"github.com/SusanEnneking/angryoldshedev/server/controller"
+	"github.com/SusanEnneking/angryoldshedev/server/repository"
+	"github.com/SusanEnneking/angryoldshedev/server/sqldb"
 )
 
 func main() {
-	token := os.Getenv("OPENAI_TOKEN")
-	client := openai.NewClient(token)
-	resp, err := client.CreateChatCompletion(
-		context.Background(),
-		openai.ChatCompletionRequest{
-			Model: openai.GPT3Dot5Turbo,
-			Messages: []openai.ChatCompletionMessage{
-				{
-					Role:    openai.ChatMessageRoleUser,
-					Content: "Hello!",
-				},
-			},
-		},
-	)
+	db := sqldb.ConnectDB()
+	defer db.Close()
 
-	if err != nil {
-		fmt.Printf("ChatCompletion error: %v\n", err)
-		return
+	// Create repos
+	blogRepo := repository.NewBlogRepo(db)
+
+	h := controller.NewBaseHandler(blogRepo)
+
+	http.HandleFunc("/", h.GetAll)
+
+	s := &http.Server{
+		Addr: fmt.Sprintf("%s:%s", "localhost", "8080"),
 	}
 
-	fmt.Println(resp.Choices[0].Message.Content)
+	s.ListenAndServe()
+
 }
