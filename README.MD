@@ -33,5 +33,5 @@ docker-compose up -d
 2.  Run your create script (Database/blog.sql)
 
 ## NOTES ##
-[GO text to PDF](https://blog.logrocket.com/converting-text-file-pdf-go/)
+[GO text to PDF](https://blog.logrocket.com/converting-text-file-pdf-go/)\
 [Repository Pattern in Go](https://techinscribed.com/different-approaches-to-pass-database-connection-into-controllers-in-golang/?source=post_page-----d22d3fa76d91--------------------------------)
