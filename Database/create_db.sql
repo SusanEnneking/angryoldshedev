@@ -31,3 +31,18 @@ CREATE TABLE `blogs`.`blog_body` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `body` TEXT,
   PRIMARY KEY (`id`));
+
+USE blogs;
+
+INSERT INTO category (category, created_by, created_date, is_active)
+VALUES ('Culture', 'init', curdate(), 1);
+
+INSERT INTO category (category, created_by, created_date, is_active)
+VALUES ('Technical', 'init', curdate(), 1);
+
+INSERT INTO category (category, created_by, created_date, is_active)
+VALUES ('Inclusion', 'init', curdate(), 1);
+
+INSERT INTO category (category, created_by, created_date, is_active)
+VALUES ('Random Rant', 'init', curdate(), 1);
+
