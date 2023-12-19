@@ -28,6 +28,7 @@ In terminal, run:
 ```
 docker-compose up -d
 ```
+Bringing up the db container will initialize your database if you don't have one out there.  If you have one out there and you want to re-initialize it, use ```docker system prune -a``` and ```docker volume prune```.\
 [This article](https://hevodata.com/learn/docker-mysql/) has some good info regarding how to get into the container and change the root password.
 
 2.  Run your create script (Database/blog.sql)
