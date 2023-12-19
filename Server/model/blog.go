@@ -15,11 +15,12 @@ type Blog struct {
 	CreatedOn     time.Time
 	CreatedBy     string
 	Active        bool
-	CategoryId    int
+	Category      string
 }
 
 // BlogRepository ..
 type BlogRepository interface {
-	GetAll() (*Blog, error)
+	GetAll() ([]*Blog, error)
 	Save(Blog *Blog) error
+	Close()
 }
