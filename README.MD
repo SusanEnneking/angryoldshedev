@@ -36,3 +36,6 @@ Bringing up the db container will initialize your database if you don't have one
 ## NOTES ##
 [GO text to PDF](https://blog.logrocket.com/converting-text-file-pdf-go/)\
 [Repository Pattern in Go](https://techinscribed.com/different-approaches-to-pass-database-connection-into-controllers-in-golang/?source=post_page-----d22d3fa76d91--------------------------------)
+
+## I LIKE A FREEBIE ##
+[MUI offers free templates](https://mui.com/material-ui/getting-started/templates/) :joy:
