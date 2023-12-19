@@ -62,10 +62,10 @@ INSERT INTO blog (body_id, auto_generated, topic, written, created_date, created
 VALUES (1, 0, "Culture Topic", "Well written culture question.", curdate(), 'init', 1, 1);
 
 INSERT INTO blog (body_id, auto_generated, topic, written, created_date, created_by, is_active, category_id)
-VALUES (2, 0, "Technical Topic", "Well written culture question.", curdate(), 'init', 1, 2);
+VALUES (2, 0, "Technical Topic", "Well written technical question.", curdate(), 'init', 1, 2);
 
 INSERT INTO blog (body_id, auto_generated, topic, written, created_date, created_by, is_active, category_id)
-VALUES (3, 0, "Inclusion Topic", "Well written culture question.", curdate(), 'init', 1, 3);
+VALUES (3, 0, "Inclusion Topic", "Well written inclusion question.", curdate(), 'init', 1, 3);
 
 INSERT INTO blog (body_id, auto_generated, topic, written, created_date, created_by, is_active, category_id)
-VALUES (4, 0, "Technical Topic", "Well written culture question.", curdate(), 'init', 1, 4);
+VALUES (4, 0, "Random Rant Topic", "Well written random rant question.", curdate(), 'init', 1, 4);
