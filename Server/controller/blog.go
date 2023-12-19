@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"fmt"
+	"encoding/json"
 	"net/http"
 
 	"github.com/SusanEnneking/angryoldshedev/server/model"
@@ -19,10 +19,25 @@ func NewBaseHandler(blogRepo model.BlogRepository) *BaseHandler {
 	}
 }
 
-func (h *BaseHandler) GetAll(w http.ResponseWriter, r *http.Request) {
-	if blogs, err := h.blogRepo.GetAll(); err != nil {
-		fmt.Println("Error", blogs)
-	}
+type ReturnValues struct {
+	Errcode int         `json:"errcode"`
+	Message string      `json:"message"`
+	Data    interface{} `json:"data"`
+}
 
-	w.Write([]byte("Hello, World"))
+func (h *BaseHandler) GetAll(w http.ResponseWriter, r *http.Request) {
+	blogs, err := h.blogRepo.GetAll()
+	if err != nil {
+		json.NewEncoder(w).Encode(ReturnValues{
+			Errcode: 1,
+			Message: "Error",
+			Data:    err.Error(),
+		})
+		return
+	}
+	json.NewEncoder(w).Encode(ReturnValues{
+		Errcode: 0,
+		Message: "OK",
+		Data:    blogs,
+	})
 }

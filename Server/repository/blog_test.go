@@ -39,7 +39,7 @@ func TestBlogGetAll(t *testing.T) {
 	defer func() {
 		repo.Close()
 	}()
-	query := `SELECT blog.id as id, body_id, auto_generated, topic, generated, 
+	query := `SELECT blog.id as id, body_id, auto_generated, topic, "generated", 
 			written, blog.created_date as created_date, blog.created_by as created_by, blog.is_active as is_active,
 			category.category as category
 			FROM blog

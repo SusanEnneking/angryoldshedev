@@ -20,7 +20,7 @@ func NewBlogRepo(db *sql.DB) *BlogRepo {
 
 func (r *BlogRepo) GetAll() ([]*model.Blog, error) {
 	var blogs []*model.Blog
-	query := `SELECT blog.id as id, body_id, auto_generated, topic, generated, 
+	query := `SELECT blog.id as id, body_id, auto_generated, topic, "generated", 
 			written, blog.created_date as created_date, blog.created_by as created_by, blog.is_active as is_active,
 			category.category as category
 			FROM blog
