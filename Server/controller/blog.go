@@ -20,8 +20,8 @@ func NewBaseHandler(blogRepo model.BlogRepository) *BaseHandler {
 }
 
 func (h *BaseHandler) GetAll(w http.ResponseWriter, r *http.Request) {
-	if user, err := h.blogRepo.GetAll(); err != nil {
-		fmt.Println("Error", user)
+	if blogs, err := h.blogRepo.GetAll(); err != nil {
+		fmt.Println("Error", blogs)
 	}
 
 	w.Write([]byte("Hello, World"))

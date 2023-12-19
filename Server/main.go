@@ -11,11 +11,12 @@ import (
 
 func main() {
 	db := sqldb.ConnectDB()
-	defer db.Close()
 
 	// Create repos
 	blogRepo := repository.NewBlogRepo(db)
-
+	defer func() {
+		blogRepo.Close()
+	}()
 	h := controller.NewBaseHandler(blogRepo)
 
 	http.HandleFunc("/", h.GetAll)
