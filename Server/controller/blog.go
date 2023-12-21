@@ -26,6 +26,7 @@ type ReturnValues struct {
 }
 
 func (h *BaseHandler) GetAll(w http.ResponseWriter, r *http.Request) {
+	addHeaders(w)
 	blogs, err := h.blogRepo.GetAll()
 	if err != nil {
 		json.NewEncoder(w).Encode(ReturnValues{
@@ -40,4 +41,12 @@ func (h *BaseHandler) GetAll(w http.ResponseWriter, r *http.Request) {
 		Message: "OK",
 		Data:    blogs,
 	})
+}
+
+func addHeaders(w http.ResponseWriter) {
+	w.Header().Add("Connection", "keep-alive")
+	w.Header().Add("Access-Control-Allow-Origin", "http://localhost:3000")
+	w.Header().Add("Access-Control-Allow-Methods", "POST, OPTIONS, GET")
+	w.Header().Add("Access-Control-Allow-Headers", "content-type")
+	w.Header().Add("Access-Control-Max-Age", "86400")
 }

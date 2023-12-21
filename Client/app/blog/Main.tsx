@@ -2,11 +2,10 @@ import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
-import { MDXProps } from 'mdx/types';
-import Markdown from './Markdown';
+import Post from './Post';
 
 interface MainProps {
-  posts: MDXProps[];
+  posts: any[];
   title: string;
 }
 
@@ -19,19 +18,19 @@ export default function Main(props: MainProps) {
       xs={12}
       md={8}
       sx={{
-        '& .markdown': {
-          py: 3,
-        },
-      }}
+      '& .markdown': {
+        py: 3,
+      },
+    }}
     >
       <Typography variant="h6" gutterBottom>
         {title}
       </Typography>
       <Divider />
       {posts.map((post) => (
-        <Markdown className="markdown">
-          {post}
-        </Markdown>
+        <Post className="markdown" key={post.substring(0, 40)}>
+            {post}
+        </Post>
       ))}
     </Grid>
   );
