@@ -28,8 +28,8 @@ export default function Main(props: MainProps) {
       </Typography>
       <Divider />
       {posts.map((post) => (
-        <Post className="markdown" key={post.substring(0, 40)}>
-            {post}
+        <Post className="markdown" key={post.Id}>
+            {post.Generated}
         </Post>
       ))}
     </Grid>
