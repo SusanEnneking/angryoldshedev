@@ -1,10 +1,10 @@
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import XIcon from '@mui/icons-material/X';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from './Header';
 import MainFeaturedPost from './MainFeaturedPost';
@@ -12,9 +12,6 @@ import FeaturedPost from './FeaturedPost';
 import Main from './Main';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
-import post1 from './blog-post.1.mdx';
-import post2 from './blog-post.2.mdx';
-import post3 from './blog-post.3.mdx';
 
 const sections = [
   { title: 'Technology', url: '#' },
@@ -57,7 +54,7 @@ const featuredPosts = [
   },
 ];
 
-const posts = [post1, post2, post3];
+const posts = ["hello", " how are you", " where have you been?"];
 
 const sidebar = {
   title: 'About',
@@ -78,7 +75,6 @@ const sidebar = {
   ],
   social: [
     { name: 'GitHub', icon: GitHubIcon },
-    { name: 'X', icon: XIcon },
     { name: 'Facebook', icon: FacebookIcon },
   ],
 };
@@ -87,6 +83,20 @@ const sidebar = {
 const defaultTheme = createTheme();
 
 export default function Blog() {
+  let [blogPosts, setBlogPosts] = useState([]); 
+  const getPosts = async() => { 
+    const res = await fetch("http://localhost:8080/", {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'} 
+    });
+    const wordsMatchingPrefix = await res.json();
+    setBlogPosts(wordsMatchingPrefix.data);
+  }
+
+  useEffect(() => {
+    getPosts()
+  }, [])
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
@@ -100,7 +110,7 @@ export default function Blog() {
             ))}
           </Grid>
           <Grid container spacing={5} sx={{ mt: 3 }}>
-            <Main title="From the firehose" posts={[]}/>
+            <Main title="From the firehose" posts={blogPosts}/>
             <Sidebar
               title={sidebar.title}
               description={sidebar.description}

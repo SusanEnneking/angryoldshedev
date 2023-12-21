@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 
-function MarkdownListItem(props: any) {
+function PostListItem(props: any) {
   return <Box component="li" sx={{ mt: 1, typography: 'body1' }} {...props} />;
 }
 
@@ -40,7 +40,7 @@ const options = {
     },
     a: { component: Link },
     li: {
-      component: MarkdownListItem,
+      component: PostListItem,
     },
   },
 };
