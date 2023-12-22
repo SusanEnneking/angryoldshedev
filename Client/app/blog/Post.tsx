@@ -9,13 +9,13 @@ export default function Post(props: any) {
   const blogPost = props.children;
   return(
     <Card>
-        <Typography variant="h3">{blogPost.Title}</Typography>
+        <Typography variant="h4">{blogPost.Title}</Typography>
         <Typography variant="caption">{format(blogPost.CreatedOn, 'MMMM do yyyy, h:mm:ss a')} By {blogPost.CreatedBy}</Typography>
-        <Typography variant="h4">Question Posed to Open AI</Typography>
+        <Typography variant="h5">Question Posed to Open AI</Typography>
         <Typography variant="body1">{blogPost.QuestionPosedToOpenAi}</Typography>
-        <Typography variant="h4">Open AI's Answer</Typography>
-        <Typography variant="body1">Join Blog in your query.</Typography>  
-        <Divider></Divider>   
+        <Typography variant="h5">Open AI's Answer</Typography>
+        <Typography variant="body1">{blogPost.Body}</Typography>  
+        <Divider variant="inset"></Divider>   
     </Card>
 
   )

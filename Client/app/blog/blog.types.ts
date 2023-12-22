@@ -8,7 +8,8 @@ export type BlogPost = {
 	createdOn: Date,
 	createdBy: string,
 	active: boolean,
-	category: string
+	category: string,
+    body: string
 }
 
 export type Section = {
