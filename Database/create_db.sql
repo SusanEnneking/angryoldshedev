@@ -8,8 +8,8 @@ CREATE TABLE `blogs`.`blog` (
   `body_id` INT UNSIGNED NOT NULL,
   `auto_generated` TINYINT NOT NULL,
   `topic` LONGTEXT NULL,
-  `generated` LONGTEXT NULL,
-  `written` LONGTEXT NULL COMMENT '	',
+  `title` LONGTEXT NULL,
+  `question_posed_to_open_ai` LONGTEXT NULL COMMENT '	',
   `created_date` DATETIME NULL,
   `created_by` VARCHAR(45) NULL,
   `is_active` TINYINT NOT NULL,
@@ -58,14 +58,14 @@ VALUES ("This is what I have to say about inclusion.");
 INSERT INTO blog_body (body)
 VALUES ("This is what I have to say about stuff I like to rant about.");
 
-INSERT INTO blog (body_id, auto_generated, topic, written, created_date, created_by, is_active, category_id)
-VALUES (1, 0, "Culture Topic", "Well written culture question.", curdate(), 'init', 1, 1);
+INSERT INTO blog (body_id, auto_generated, topic, title, question_posed_to_open_ai, created_date, created_by, is_active, category_id)
+VALUES (1, 0, "Culture Topic", "A culture Blog", "Well written culture question.", curdate(), 'init', 1, 1);
 
-INSERT INTO blog (body_id, auto_generated, topic, written, created_date, created_by, is_active, category_id)
-VALUES (2, 0, "Technical Topic", "Well written technical question.", curdate(), 'init', 1, 2);
+INSERT INTO blog (body_id, auto_generated, topic, title, question_posed_to_open_ai, created_date, created_by, is_active, category_id)
+VALUES (2, 0, "Technical Topic", "A Technical Blog", "Well written technical question.", curdate(), 'init', 1, 2);
 
-INSERT INTO blog (body_id, auto_generated, topic, written, created_date, created_by, is_active, category_id)
-VALUES (3, 0, "Inclusion Topic", "Well written inclusion question.", curdate(), 'init', 1, 3);
+INSERT INTO blog (body_id, auto_generated, topic, title, question_posed_to_open_ai, created_date, created_by, is_active, category_id)
+VALUES (3, 0, "Inclusion Topic", "An Inclusion Blog", "Well written inclusion question.", curdate(), 'init', 1, 3);
 
-INSERT INTO blog (body_id, auto_generated, topic, written, created_date, created_by, is_active, category_id)
-VALUES (4, 0, "Random Rant Topic", "Well written random rant question.", curdate(), 'init', 1, 4);
+INSERT INTO blog (body_id, auto_generated, topic, title, question_posed_to_open_ai, created_date, created_by, is_active, category_id)
+VALUES (4, 0, "Random Rant Topic", "A Random Rant--My Specialty", "Well written random rant question.", curdate(), 'init', 1, 4);

@@ -5,12 +5,10 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
+import { Section } from './blog.types'
 
 interface HeaderProps {
-  sections: ReadonlyArray<{
-    title: string;
-    url: string;
-  }>;
+  sections: Section[];
   title: string;
 }
 
@@ -43,7 +41,7 @@ export default function Header(props: HeaderProps) {
         variant="dense"
         sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
       >
-        {sections.map((section) => (
+        {sections.map((section: Section) => (
           <Link
             color="inherit"
             noWrap

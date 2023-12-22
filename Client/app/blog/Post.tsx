@@ -1,50 +1,22 @@
 import * as React from 'react';
-import ReactMarkdown from 'markdown-to-jsx';
-import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import Box from '@mui/material/Box';
+import { Card, Divider, Typography} from '@mui/material';
+import { BlogPost } from './blog.types';
+import { format } from 'date-fns';
 
-function PostListItem(props: any) {
-  return <Box component="li" sx={{ mt: 1, typography: 'body1' }} {...props} />;
-}
 
-const options = {
-  overrides: {
-    h1: {
-      component: Typography,
-      props: {
-        gutterBottom: true,
-        variant: 'h4',
-        component: 'h1',
-      },
-    },
-    h2: {
-      component: Typography,
-      props: { gutterBottom: true, variant: 'h6', component: 'h2' },
-    },
-    h3: {
-      component: Typography,
-      props: { gutterBottom: true, variant: 'subtitle1' },
-    },
-    h4: {
-      component: Typography,
-      props: {
-        gutterBottom: true,
-        variant: 'caption',
-        paragraph: true,
-      },
-    },
-    p: {
-      component: Typography,
-      props: { paragraph: true },
-    },
-    a: { component: Link },
-    li: {
-      component: PostListItem,
-    },
-  },
-};
+export default function Post(props: any) {
+  const blogPost = props.children;
+  return(
+    <Card>
+        <Typography variant="h3">{blogPost.Title}</Typography>
+        <Typography variant="caption">{format(blogPost.CreatedOn, 'MMMM do yyyy, h:mm:ss a')} By {blogPost.CreatedBy}</Typography>
+        <Typography variant="h4">Question Posed to Open AI</Typography>
+        <Typography variant="body1">{blogPost.QuestionPosedToOpenAi}</Typography>
+        <Typography variant="h4">Open AI's Answer</Typography>
+        <Typography variant="body1">Join Blog in your query.</Typography>  
+        <Divider></Divider>   
+    </Card>
 
-export default function Markdown(props: any) {
-  return <ReactMarkdown options={options} {...props} />;
+  )
 }
