@@ -54,7 +54,7 @@ const featuredPosts = [
   },
 ];
 
-const posts = ["hello", " how are you", " where have you been?"];
+const posts = [];
 
 const sidebar = {
   title: 'About',
@@ -122,7 +122,7 @@ export default function Blog() {
       </Container>
       <Footer
         title="Footer"
-        description="Something here to give the footer a purpose!"
+        description="Even angry old girls gotta be thankful!  Thank you for visiting!"
       />
     </ThemeProvider>
   );
