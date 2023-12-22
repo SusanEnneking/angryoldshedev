@@ -16,6 +16,7 @@ type Blog struct {
 	CreatedBy             string
 	Active                bool
 	Category              string
+	Body                  string
 }
 
 // BlogRepository ..
