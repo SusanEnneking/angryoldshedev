@@ -19,7 +19,8 @@ func main() {
 	}()
 	h := controller.NewBaseHandler(blogRepo)
 
-	http.HandleFunc("/", h.GetAll)
+	http.HandleFunc("/blogs", h.GetAll)
+	http.HandleFunc("/categories", h.Categories)
 
 	s := &http.Server{
 		Addr: fmt.Sprintf("%s:%s", "localhost", "8080"),

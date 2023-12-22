@@ -12,19 +12,7 @@ import FeaturedPost from './FeaturedPost';
 import Main from './Main';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
-
-const sections = [
-  { title: 'Technology', url: '#' },
-  { title: 'Design', url: '#' },
-  { title: 'Culture', url: '#' },
-  { title: 'Business', url: '#' },
-  { title: 'Politics', url: '#' },
-  { title: 'Opinion', url: '#' },
-  { title: 'Science', url: '#' },
-  { title: 'Health', url: '#' },
-  { title: 'Style', url: '#' },
-  { title: 'Travel', url: '#' },
-];
+import { BlogPost, Section } from './blog.types'
 
 const mainFeaturedPost = {
   title: 'Title of a longer featured blog post',
@@ -59,7 +47,7 @@ const posts = [];
 const sidebar = {
   title: 'About',
   description:
-    'Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.',
+    'Angry Old She Dev is a site used to experiment with some things its developer has not tried yet.',
   archives: [
     { title: 'March 2020', url: '#' },
     { title: 'February 2020', url: '#' },
@@ -83,25 +71,38 @@ const sidebar = {
 const defaultTheme = createTheme();
 
 export default function Blog() {
-  let [blogPosts, setBlogPosts] = useState([]); 
+  let [blogPosts, setBlogPosts] = useState<BlogPost[]>([]); 
+  let [sections, setSections] = useState<Section[]>([]);
   const getPosts = async() => { 
-    const res = await fetch("http://localhost:8080/", {
+    const res = await fetch("http://localhost:8080/blogs", {
         method: 'GET',
         headers: {'Content-Type': 'application/json'} 
     });
-    const wordsMatchingPrefix = await res.json();
-    setBlogPosts(wordsMatchingPrefix.data);
+    const blogs = await res.json();
+    setBlogPosts(blogs.data);
+  }
+  const getSections = async() => { 
+    const res = await fetch("http://localhost:8080/categories", {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'} 
+    });
+    const sections = await res.json();
+    const sectionList = sections.data.map((section: string) =>{
+        return {title: section, url: '#'};
+    });
+    setSections(sectionList);
   }
 
   useEffect(() => {
-    getPosts()
+    getPosts();
+    getSections()
   }, [])
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Header title="Blog" sections={sections} />
+        <Header title="Angry Old She Dev" sections={sections} />
         <main>
           <MainFeaturedPost post={mainFeaturedPost} />
           <Grid container spacing={4}>
@@ -121,7 +122,7 @@ export default function Blog() {
         </main>
       </Container>
       <Footer
-        title="Footer"
+        title="So happy you dropped by!"
         description="Even angry old girls gotta be thankful!  Thank you for visiting!"
       />
     </ThemeProvider>

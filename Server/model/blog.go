@@ -21,6 +21,7 @@ type Blog struct {
 // BlogRepository ..
 type BlogRepository interface {
 	GetAll() ([]*Blog, error)
+	Categories() ([]string, error)
 	Save(Blog *Blog) error
 	Close()
 }

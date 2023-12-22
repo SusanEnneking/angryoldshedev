@@ -43,6 +43,24 @@ func (h *BaseHandler) GetAll(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+func (h *BaseHandler) Categories(w http.ResponseWriter, r *http.Request) {
+	addHeaders(w)
+	categories, err := h.blogRepo.Categories()
+	if err != nil {
+		json.NewEncoder(w).Encode(ReturnValues{
+			Errcode: 1,
+			Message: "Error",
+			Data:    err.Error(),
+		})
+		return
+	}
+	json.NewEncoder(w).Encode(ReturnValues{
+		Errcode: 0,
+		Message: "OK",
+		Data:    categories,
+	})
+}
+
 func addHeaders(w http.ResponseWriter) {
 	w.Header().Add("Connection", "keep-alive")
 	w.Header().Add("Access-Control-Allow-Origin", "http://localhost:3000")
