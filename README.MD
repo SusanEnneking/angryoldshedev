@@ -25,12 +25,23 @@ It's an experiment, so there's going to be wonkiness.
 1.  Start docker container(s)
 
 In terminal, run:
+```source local.env``` (your local.env needs to be set up by you based on the env.sample)
 ```
 docker-compose up -d
 ```
 Bringing up the db container will initialize your database if you don't have one out there.  If you have one out there and you want to re-initialize it, use ```docker system prune -a``` and ```docker volume prune```.\
 [This article](https://hevodata.com/learn/docker-mysql/) has some good info regarding how to get into the container and change the root password.
 
+### To Run Locally ###
+1. Start docker container(s) (see above, this starts the db server)
+2. Navigate to /client and run\
+```npm install``` (just the first time)
+```npm run dev```
+3. Navigate to /server and run\
+```source local.env``` (your local.env needs to be set up by you based on env.sample)
+```go run main.go```
+
+navigate to localhost:3000 to see the site.
 
 
 ## NOTES ##
