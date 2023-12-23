@@ -9,6 +9,8 @@ export type BlogPost = {
 	createdBy: string,
 	active: boolean,
 	category: string,
+    imageUrl: string,
+    imageText: string,
     body: string
 }
 
