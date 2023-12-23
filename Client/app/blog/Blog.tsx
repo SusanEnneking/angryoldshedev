@@ -5,23 +5,15 @@ import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from './Header';
-import MainFeaturedPost from './MainFeaturedPost';
+import IntroductionPost from './IntroductionPost';
 import FeaturedPost from './FeaturedPost';
 import Main from './Main';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 import { BlogPost, Section } from './blog.types'
-
-const mainFeaturedPost = {
-  title: 'Title of a longer featured blog post',
-  description:
-    "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-  image: 'https://source.unsplash.com/random?wallpapers',
-  imageText: 'main image description',
-  linkText: 'Continue reading…',
-};
 
 const featuredPosts = [
   {
@@ -64,6 +56,7 @@ const sidebar = {
   social: [
     { name: 'GitHub', icon: GitHubIcon },
     { name: 'Facebook', icon: FacebookIcon },
+    { name: 'LinkedIn', icon: LinkedInIcon },
   ],
 };
 
@@ -72,6 +65,7 @@ const defaultTheme = createTheme();
 
 export default function Blog() {
   let [blogPosts, setBlogPosts] = useState<BlogPost[]>([]); 
+  let [intro, setIntro] = useState<BlogPost>();
   let [sections, setSections] = useState<Section[]>([]);
   const getPosts = async() => { 
     const res = await fetch("http://localhost:8080/blogs", {
@@ -79,8 +73,12 @@ export default function Blog() {
         headers: {'Content-Type': 'application/json'} 
     });
     const blogs = await res.json();
-    setBlogPosts(blogs.data);
+    const introBlogs = blogs.data.filter((item: BlogPost) => {return item.category === "Introduction"})
+    setIntro(introBlogs[0]);
+    const normalBlogs = blogs.data.filter((item: BlogPost) => {return item.category !== "Introduction"})
+    setBlogPosts(normalBlogs);
   }
+
   const getSections = async() => { 
     const res = await fetch("http://localhost:8080/categories", {
         method: 'GET',
@@ -104,7 +102,7 @@ export default function Blog() {
       <Container maxWidth="lg">
         <Header title="Angry Old She Dev" sections={sections} />
         <main>
-          <MainFeaturedPost post={mainFeaturedPost} />
+          <IntroductionPost post={intro as BlogPost} />
           <Grid container spacing={4}>
             {featuredPosts.map((post) => (
               <FeaturedPost key={post.title} post={post} />

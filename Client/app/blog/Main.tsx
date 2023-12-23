@@ -29,8 +29,7 @@ export default function Main(props: MainProps) {
       </Typography>
       <Divider />
       {posts.map((post) => (
-        <Post className="markdown" key={post.id}>
-            {post}
+        <Post post={post} key={post.id}>
         </Post>
       ))}
     </Grid>

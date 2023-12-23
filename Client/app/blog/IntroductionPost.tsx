@@ -4,18 +4,13 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
+import { BlogPost } from './blog.types';
 
-interface MainFeaturedPostProps {
-  post: {
-    description: string;
-    image: string;
-    imageText: string;
-    linkText: string;
-    title: string;
-  };
+interface IntroductionPostProps {
+  post: BlogPost
 }
 
-export default function MainFeaturedPost(props: MainFeaturedPostProps) {
+export default function IntroductionPost(props: IntroductionPostProps) {
   const { post } = props;
 
   return (
@@ -28,11 +23,11 @@ export default function MainFeaturedPost(props: MainFeaturedPostProps) {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        backgroundImage: `url(${post.image})`,
+        backgroundImage: `url(${post?.imageUrl})`,
       }}
     >
       {/* Increase the priority of the hero background image */}
-      {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
+      {<img style={{ display: 'none' }} src={post?.imageUrl} alt={post?.imageText} />}
       <Box
         sx={{
           position: 'absolute',
@@ -53,13 +48,13 @@ export default function MainFeaturedPost(props: MainFeaturedPostProps) {
             }}
           >
             <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-              {post.title}
+              {post?.title}
             </Typography>
             <Typography variant="h5" color="inherit" paragraph>
-              {post.description}
+              {post?.body}
             </Typography>
             <Link variant="subtitle1" href="#">
-              {post.linkText}
+              {'Continue reading...'}
             </Link>
           </Box>
         </Grid>
