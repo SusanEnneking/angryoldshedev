@@ -4,17 +4,20 @@ import { Card, Divider, Typography} from '@mui/material';
 import { BlogPost } from './blog.types';
 import { format } from 'date-fns';
 
+interface PostProps {
+    post: BlogPost;
+  }
 
-export default function Post(props: any) {
-  const blogPost = props.children;
+export default function Post(props: PostProps ) {
+  const { post } = props;
   return(
     <Card>
-        <Typography variant="h4">{blogPost.Title}</Typography>
-        <Typography variant="caption">{format(blogPost.CreatedOn, 'MMMM do yyyy, h:mm:ss a')} By {blogPost.CreatedBy}</Typography>
+        <Typography variant="h4">{post?.title}</Typography>
+        <Typography variant="caption">{format(post?.createdOn, 'MMMM do yyyy, h:mm:ss a')} By {post?.createdBy}</Typography>
         <Typography variant="h5">Question Posed to Open AI</Typography>
-        <Typography variant="body1">{blogPost.QuestionPosedToOpenAi}</Typography>
+        <Typography variant="body1">{post?.questionPosedToOpenAi}</Typography>
         <Typography variant="h5">Open AI's Answer</Typography>
-        <Typography variant="body1">{blogPost.Body}</Typography>  
+        <Typography variant="body1">{post?.body}</Typography>  
         <Divider variant="inset"></Divider>   
     </Card>
 

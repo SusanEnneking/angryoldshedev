@@ -14,6 +14,8 @@ CREATE TABLE `blogs`.`blog` (
   `created_by` VARCHAR(45) NULL,
   `is_active` TINYINT NOT NULL,
   `category_id` INT UNSIGNED NULL,
+  `image_url` TEXT NULL,
+  `image_text` TEXT NULL,
    PRIMARY KEY (`id`));
 
 CREATE TABLE `blogs`.`category` (
@@ -46,6 +48,9 @@ VALUES ('Inclusion', 'init', curdate(), 1);
 INSERT INTO category (category, created_by, created_date, is_active)
 VALUES ('Random Rant', 'init', curdate(), 1);
 
+INSERT INTO category (category, created_by, created_date, is_active)
+VALUES ('Introduction', 'Susan', curdate(), 1);
+
 INSERT INTO blog_body (body)
 VALUES ("This is what I have to say about culture.");
 
@@ -58,14 +63,20 @@ VALUES ("This is what I have to say about inclusion.");
 INSERT INTO blog_body (body)
 VALUES ("This is what I have to say about stuff I like to rant about.");
 
-INSERT INTO blog (body_id, auto_generated, topic, title, question_posed_to_open_ai, created_date, created_by, is_active, category_id)
-VALUES (1, 0, "Culture Topic", "A culture Blog", "Well written culture question.", curdate(), 'init', 1, 1);
+INSERT INTO blog_body (body)
+VALUES ("Hi.  I'm Susan, the angry old she dev.  On most days, though, I'm not angry. On Most days, I'm thankful to be a Software Engineer.");
 
-INSERT INTO blog (body_id, auto_generated, topic, title, question_posed_to_open_ai, created_date, created_by, is_active, category_id)
-VALUES (2, 0, "Technical Topic", "A Technical Blog", "Well written technical question.", curdate(), 'init', 1, 2);
+INSERT INTO blog (body_id, auto_generated, topic, title, question_posed_to_open_ai, created_date, created_by, is_active, category_id, image_url, image_text)
+VALUES (1, 0, "Culture Topic", "A culture Blog", "Well written culture question.", curdate(), 'init', 1, 1, 'https://source.unsplash.com/random?wallpapers', 'Thank you unsplash!');
 
-INSERT INTO blog (body_id, auto_generated, topic, title, question_posed_to_open_ai, created_date, created_by, is_active, category_id)
-VALUES (3, 0, "Inclusion Topic", "An Inclusion Blog", "Well written inclusion question.", curdate(), 'init', 1, 3);
+INSERT INTO blog (body_id, auto_generated, topic, title, question_posed_to_open_ai, created_date, created_by, is_active, category_id, image_url, image_text)
+VALUES (2, 0, "Technical Topic", "A Technical Blog", "Well written technical question.", curdate(), 'init', 1, 2, 'https://source.unsplash.com/random?wallpapers', 'Thank you unsplash!');
 
-INSERT INTO blog (body_id, auto_generated, topic, title, question_posed_to_open_ai, created_date, created_by, is_active, category_id)
-VALUES (4, 0, "Random Rant Topic", "A Random Rant--My Specialty", "Well written random rant question.", curdate(), 'init', 1, 4);
+INSERT INTO blog (body_id, auto_generated, topic, title, question_posed_to_open_ai, created_date, created_by, is_active, category_id, image_url, image_text)
+VALUES (3, 0, "Inclusion Topic", "An Inclusion Blog", "Well written inclusion question.", curdate(), 'init', 1, 3, 'https://source.unsplash.com/random?wallpapers', 'Thank you unsplash!');
+
+INSERT INTO blog (body_id, auto_generated, topic, title, question_posed_to_open_ai, created_date, created_by, is_active, category_id, image_url, image_text)
+VALUES (4, 0, "Random Rant Topic", "A Random Rant--My Specialty", "Well written random rant question.", curdate(), 'init', 1, 4, 'https://source.unsplash.com/random?wallpapers', 'Thank you unsplash!');
+
+INSERT INTO blog (body_id, auto_generated, topic, title, question_posed_to_open_ai, created_date, created_by, is_active, category_id, image_url, image_text)
+VALUES (5, 0, "Introduction", "Welcome!", "Introduction", curdate(), 'init', 1, 5, 'https://source.unsplash.com/random?wallpapers', 'Thank you unsplash!');
