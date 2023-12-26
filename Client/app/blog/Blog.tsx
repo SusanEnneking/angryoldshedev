@@ -20,7 +20,7 @@ const featuredPosts = [
   {
     title: 'Featured post',
     date: 'Nov 12',
-    description:
+    body:
       'This is a wider card with supporting text below as a natural lead-in to additional content.',
     image: 'https://source.unsplash.com/random?wallpapers',
     imageLabel: 'Image Text',
@@ -28,7 +28,7 @@ const featuredPosts = [
   {
     title: 'Post title',
     date: 'Nov 11',
-    description:
+    body:
       'This is a wider card with supporting text below as a natural lead-in to additional content.',
     image: 'https://source.unsplash.com/random?wallpapers',
     imageLabel: 'Image Text',
@@ -66,32 +66,34 @@ const defaultTheme = createTheme();
 
 export default function Blog() {
   const { blogPosts, intro } = useBlogPosts();
-  const{ sections } = useSections();
+  const sections = useSections();
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
-      <Container maxWidth="lg">
-        <Header title="Angry Old She Dev" sections={sections} data-testid="header" />
-        <main>
-          <IntroductionPost post={intro as BlogPost} data-testid="introduction" />
-          <Grid container spacing={4} data-testid="featured">
-            {featuredPosts.map((post) => (
-              <FeaturedPost key={post.title} post={post} />
-            ))}
-          </Grid>
-          <Grid container spacing={5} sx={{ mt: 3 }}>
-            <Main title="From the firehose" posts={blogPosts} data-testid="firehose"/>
-            <Sidebar
-              title={sidebar.title}
-              description={sidebar.description}
-              archives={sidebar.archives}
-              social={sidebar.social}
-              data-testid="sidebar"
-            />
-          </Grid>
-        </main>
-      </Container>
+      { blogPosts && sections && intro && (
+        <Container maxWidth="lg">
+          <Header title="Angry Old She Dev" sections={sections} data-testid="header" />
+          <main>
+            <IntroductionPost post={intro as BlogPost} data-testid="introduction" />
+            <Grid container spacing={4} data-testid="featured">
+              {featuredPosts.map((post) => (
+                <FeaturedPost key={post.title} post={post} />
+              ))}
+            </Grid>
+            <Grid container spacing={5} sx={{ mt: 3 }}>
+              <Main title="From the firehose" posts={blogPosts} data-testid="firehose"/>
+              <Sidebar
+                title={sidebar.title}
+                description={sidebar.description}
+                archives={sidebar.archives}
+                social={sidebar.social}
+                data-testid="sidebar"
+              />
+            </Grid>
+          </main>
+        </Container>
+      )}
       <Footer data-testid="footer"
         title="So happy you dropped by!"
         description="Even angry old girls gotta be thankful!  Thank you for visiting!"

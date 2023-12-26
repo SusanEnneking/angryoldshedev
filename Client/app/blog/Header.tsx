@@ -18,7 +18,7 @@ export default function Header(props: HeaderProps) {
   return (
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Button size="small">Subscribe</Button>
+        <Button size="small" data-testid="subscribe">Subscribe</Button>
         <Typography
           component="h2"
           variant="h5"
@@ -40,6 +40,7 @@ export default function Header(props: HeaderProps) {
         component="nav"
         variant="dense"
         sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
+        data-testid="sections"
       >
         {sections?.map((section: Section) => (
           <Link
