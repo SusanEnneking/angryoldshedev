@@ -47,10 +47,10 @@ export default function IntroductionPost(props: IntroductionPostProps) {
               pr: { md: 0 },
             }}
           >
-            <Typography component="h1" variant="h3" color="inherit" gutterBottom>
+            <Typography component="h1" variant="h3" color="inherit" gutterBottom data-testid="title">
               {post?.title}
             </Typography>
-            <Typography variant="h5" color="inherit" paragraph>
+            <Typography variant="h5" color="inherit" paragraph data-testid="body">
               {post?.body}
             </Typography>
             <Link variant="subtitle1" href="#">
