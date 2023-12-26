@@ -1,9 +1,9 @@
 
 import { useEffect, useState } from 'react';
-import { BlogPost } from '../blog/blog.types'
+import { BlogPost } from '../blog/blog.types';
 const useBlogPosts = () => { 
     const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]); 
-    const [intro, setIntro] = useState<BlogPost>();
+    const [intro, setIntro] = useState<BlogPost>({} as BlogPost);
     useEffect(() => {
         const fetchData = async () => {
             const response  = await fetch("http://localhost:8080/blogs", {
@@ -19,7 +19,7 @@ const useBlogPosts = () => {
         fetchData();
     }, [])
 
-    return {blogPosts, intro}
+    return {blogPosts, intro};
   }
   export default useBlogPosts;
 
