@@ -10,15 +10,17 @@ const useSections = () => {
                 headers: {'Content-Type': 'application/json'} 
             })
             const sections = await response.json()
-            const sectionList = sections.data.map((section: string) =>{
+            const sectionList = sections.data.map((section: Section) =>{
                 return {title: section, url: '#'};
             });
-            setSections(sectionList);
+            if (sectionList){
+                setSections(sectionList);
+            }
         }
         fetchData();
     }, [])
 
-    return sections
+    return sections;
   }
   export default useSections;
 
