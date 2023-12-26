@@ -28,7 +28,7 @@ export default function Footer(props: FooterProps) {
   return (
     <Box component="footer" sx={{ bgcolor: 'background.paper', py: 6 }}>
       <Container maxWidth="lg">
-        <Typography variant="h6" align="center" gutterBottom>
+        <Typography variant="h6" align="center" gutterBottom data-testid="title">
           {title}
         </Typography>
         <Typography
@@ -36,6 +36,7 @@ export default function Footer(props: FooterProps) {
           align="center"
           color="text.secondary"
           component="p"
+          data-testid="description"
         >
           {description}
         </Typography>
