@@ -21,10 +21,11 @@ export default function Main(props: MainProps) {
       sx={{
       '& .markdown': {
         py: 3,
-      },
+      }
     }}
+    data-testid="posts"
     >
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6" gutterBottom data-testid="title">
         {title}
       </Typography>
       <Divider />

@@ -2,7 +2,9 @@ import * as React from 'react';
 import Link from '@mui/material/Link';
 import { Card, Divider, Typography} from '@mui/material';
 import { BlogPost } from './blog.types';
-import { format } from 'date-fns';
+
+// using this because Jest needs it
+const { format } = require("date-fns");
 
 interface PostProps {
     post: BlogPost;
