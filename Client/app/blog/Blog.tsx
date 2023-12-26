@@ -14,7 +14,8 @@ import Main from './Main';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 import { BlogPost, Section } from './blog.types'
-
+import useBlogPosts  from '../hooks/useBlogPosts'
+import useSections from '../hooks/useSections'
 const featuredPosts = [
   {
     title: 'Featured post',
@@ -64,62 +65,34 @@ const sidebar = {
 const defaultTheme = createTheme();
 
 export default function Blog() {
-  let [blogPosts, setBlogPosts] = useState<BlogPost[]>([]); 
-  let [intro, setIntro] = useState<BlogPost>();
-  let [sections, setSections] = useState<Section[]>([]);
-  const getPosts = async() => { 
-    const res = await fetch("http://localhost:8080/blogs", {
-        method: 'GET',
-        headers: {'Content-Type': 'application/json'} 
-    });
-    const blogs = await res.json();
-    const introBlogs = blogs.data.filter((item: BlogPost) => {return item.category === "Introduction"})
-    setIntro(introBlogs[0]);
-    const normalBlogs = blogs.data.filter((item: BlogPost) => {return item.category !== "Introduction"})
-    setBlogPosts(normalBlogs);
-  }
-
-  const getSections = async() => { 
-    const res = await fetch("http://localhost:8080/categories", {
-        method: 'GET',
-        headers: {'Content-Type': 'application/json'} 
-    });
-    const sections = await res.json();
-    const sectionList = sections.data.map((section: string) =>{
-        return {title: section, url: '#'};
-    });
-    setSections(sectionList);
-  }
-
-  useEffect(() => {
-    getPosts();
-    getSections()
-  }, [])
+  const { blogPosts, intro } = useBlogPosts();
+  const{ sections } = useSections();
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Header title="Angry Old She Dev" sections={sections} />
+        <Header title="Angry Old She Dev" sections={sections} data-testid="header" />
         <main>
-          <IntroductionPost post={intro as BlogPost} />
-          <Grid container spacing={4}>
+          <IntroductionPost post={intro as BlogPost} data-testid="introduction" />
+          <Grid container spacing={4} data-testid="featured">
             {featuredPosts.map((post) => (
               <FeaturedPost key={post.title} post={post} />
             ))}
           </Grid>
           <Grid container spacing={5} sx={{ mt: 3 }}>
-            <Main title="From the firehose" posts={blogPosts}/>
+            <Main title="From the firehose" posts={blogPosts} data-testid="firehose"/>
             <Sidebar
               title={sidebar.title}
               description={sidebar.description}
               archives={sidebar.archives}
               social={sidebar.social}
+              data-testid="sidebar"
             />
           </Grid>
         </main>
       </Container>
-      <Footer
+      <Footer data-testid="footer"
         title="So happy you dropped by!"
         description="Even angry old girls gotta be thankful!  Thank you for visiting!"
       />
