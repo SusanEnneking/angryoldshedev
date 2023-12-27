@@ -14,12 +14,12 @@ export default function Post(props: PostProps ) {
   const { post } = props;
   return(
     <Card>
-        <Typography variant="h4">{post?.title}</Typography>
-        <Typography variant="caption">{format(post?.createdOn, 'MMMM do yyyy, h:mm:ss a')} By {post?.createdBy}</Typography>
+        <Typography variant="h4" data-testid="post-title">{post?.title}</Typography>
+        <Typography variant="caption" data-testid="caption">{format(new Date(post.createdOn), 'MMMM dd yyyy, h:mm:ss a')} By {post?.createdBy}</Typography>
         <Typography variant="h5">Question Posed to Open AI</Typography>
-        <Typography variant="body1">{post?.questionPosedToOpenAi}</Typography>
+        <Typography variant="body1" data-testid="question">{post?.questionPosedToOpenAi}</Typography>
         <Typography variant="h5">Open AI's Answer</Typography>
-        <Typography variant="body1">{post?.body}</Typography>  
+        <Typography variant="body1" data-testid="answer">{post?.body}</Typography>  
         <Divider variant="inset"></Divider>   
     </Card>
 
