@@ -50,7 +50,7 @@ export default function Sidebar(props: SidebarProps) {
         >
           <Stack direction="row" spacing={1} alignItems="center">
             <network.icon />
-            <span data-testid="network-name">{network.name}</span>
+            <span>{network.name}</span>
           </Stack>
         </Link>
       ))}
