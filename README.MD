@@ -52,6 +52,6 @@ navigate to localhost:3000 to see the site.
 [MUI offers free templates](https://mui.com/material-ui/getting-started/templates/) :joy:
 
 ## CI/CD ##
-This repo will be using a few Let's Encrypt for certs.  Thinking about CI/CD, it seems like the certs ought to be up and running and we don't need to re-build/re-start those containers for deploys.  I've read a bit about how others approach this and it seems reasonable that we will need to update the code containers (still not sure I'm going to containerize my go code) and db container, but the cert stuff should be left out.
+This repo will be using Let's Encrypt for certs.  Thinking about CI/CD, it seems like the certs ought to be up and running and we don't need to re-build/re-start those containers for deploys.  I've read a bit about how others approach this and it seems reasonable that we will need to update the code containers (still not sure I'm going to containerize my go code) and db container, but the cert stuff should be left out.
 
 So, the site and cert infrastructure needs to be deployed and left alone. That's where I am in thought at this point. Keeping notes here to remind myself what I was thinking!
