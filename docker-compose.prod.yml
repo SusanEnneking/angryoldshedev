@@ -1,6 +1,17 @@
 version: '2'
 
 services:
+  db:
+    build: .
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql-db:/var/lib/mysql
 
   nginx:
     build:
@@ -32,3 +43,7 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     volumes_from:
       - "nginx-proxy"
+
+volumes:
+  mysql-db:
+    driver: local
